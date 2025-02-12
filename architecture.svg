@@ -62,7 +62,7 @@
     
     <!-- Read Operations -->
     <path d="M350,150 L150,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
-    <path d="M350,150 L350,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
+    <path d="M350,150 L370,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
     <path d="M350,150 L550,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
     
     <!-- Replication Streams -->
