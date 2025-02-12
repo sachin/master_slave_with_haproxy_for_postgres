@@ -4,7 +4,7 @@ This project demonstrates a robust PostgreSQL master-slave replication setup usi
 
 ## Architecture Overview
 
-![Architecture Diagram](architecture.svg)
+![Architecture Diagram](detail_architecture.svg)
 
 ### Components
 - 1 Master Node (Write Operations)
