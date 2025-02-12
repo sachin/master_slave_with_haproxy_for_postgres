@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Connection Lines -->
+    <!-- Read Operations (moved to background) -->
+    <path d="M350,150 L150,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
+    <path d="M350,150 L370,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
+    <path d="M350,150 L550,450" stroke="#0000ff" stroke-width="2" marker-end="url(#arrowRead)"/>
+    
+    <!-- Client Applications -->
+    <g transform="translate(100,50)">
+        <rect x="-50" y="-30" width="100" height="60" rx="5" fill="#87CEEB" stroke="#333" stroke-width="2"/>
+        <text x="0" y="0" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Client App 1</text>
+        <text x="0" y="20" text-anchor="middle" font-family="Arial" font-size="10">(Read Requests)</text>
+    </g>
+    
+    <g transform="translate(600,50)">
+        <rect x="-50" y="-30" width="100" height="60" rx="5" fill="#FFB6C1" stroke="#333" stroke-width="2"/>
+        <text x="0" y="0" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Client App 2</text>
+        <text x="0" y="20" text-anchor="middle" font-family="Arial" font-size="10">(Write Requests)</text>
+    </g>
+    
+    <!-- External Request Lines -->
+    <path d="M150,50 L250,85" stroke="#0000ff" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowRead)"/>
+    <path d="M550,50 L450,85" stroke="#ff0000" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowWrite)"/>
+    
+    <!-- HAProxy Load Balancer -->
+    <g transform="translate(350,50)">
+        <rect x="-100" y="0" width="200" height="100" rx="10" fill="#ff99cc" stroke="#333" stroke-width="2"/>
+        <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">HAProxy Load Balancer</text>
+        <text x="-80" y="65" font-family="Arial" font-size="12">Read Port :5000</text>
+        <text x="-80" y="85" font-family="Arial" font-size="12">Write Port :5001</text>
+    </g>
+    
+    <!-- Write Operations -->
+    <path d="M350,150 L350,250" stroke="#ff0000" stroke-width="2" marker-end="url(#arrowWrite)"/>
+    
+    <!-- Master Node -->
+    <g transform="translate(350,250)">
+        <rect x="-90" y="0" width="180" height="100" rx="10" fill="#ffff99" stroke="#333" stroke-width="2"/>
+        <text x="0" y="30" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">PostgreSQL Master</text>
+        <text x="0" y="50" text-anchor="middle" font-family="Arial" font-size="12">Port: 5432</text>
+        <text x="0" y="70" text-anchor="middle" font-family="Arial" font-size="12">WAL Level: Replica</text>
+        <text x="0" y="90" text-anchor="middle" font-family="Arial" font-size="12">Hot Standby: ON</text>
+    </g>
+    
+    <!-- Replication Streams -->
+    <path d="M350,350 L150,450" stroke="#00aa00" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowRep)"/>
+    <path d="M350,350 L350,450" stroke="#00aa00" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowRep)"/>
+    <path d="M350,350 L550,450" stroke="#00aa00" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowRep)"/>
+    
+    <!-- Slave Nodes -->
+    <g transform="translate(150,450)">
+        <rect x="-80" y="0" width="160" height="80" rx="10" fill="#99ff99" stroke="#333" stroke-width="2"/>
+        <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Slave 1</text>
+        <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="12">Port: 5432</text>
+    </g>
+    
+    <g transform="translate(350,450)">
+        <rect x="-80" y="0" width="160" height="80" rx="10" fill="#99ff99" stroke="#333" stroke-width="2"/>
+        <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Slave 2</text>
+        <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="12">Port: 5432</text>
+    </g>
+    
+    <g transform="translate(550,450)">
+        <rect x="-80" y="0" width="160" height="80" rx="10" fill="#99ff99" stroke="#333" stroke-width="2"/>
+        <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Slave 3</text>
+        <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="12">Port: 5432</text>
+    </g>
+    
+    <!-- Arrow Markers -->
+    <defs>
+        <marker id="arrowWrite" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff0000"/>
+        </marker>
+        <marker id="arrowRead" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0000ff"/>
+        </marker>
+        <marker id="arrowRep" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#00aa00"/>
+        </marker>
+    </defs>
+    
+    <!-- Legend -->
+    <g transform="translate(600,250)">
+        <rect x="0" y="0" width="150" height="140" rx="5" fill="white" stroke="#333"/>
+        <text x="10" y="20" font-family="Arial" font-size="12" font-weight="bold">Legend:</text>
+        
+        <line x1="10" y1="35" x2="40" y2="35" stroke="#ff0000" stroke-width="2"/>
+        <text x="50" y="40" font-family="Arial" font-size="12">Write Operations</text>
+        
+        <line x1="10" y1="55" x2="40" y2="55" stroke="#0000ff" stroke-width="2"/>
+        <text x="50" y="60" font-family="Arial" font-size="12">Read Operations</text>
+        
+        <line x1="10" y1="75" x2="40" y2="75" stroke="#00aa00" stroke-width="2" stroke-dasharray="5,5"/>
+        <text x="50" y="80" font-family="Arial" font-size="12">Replication</text>
+        
+        <line x1="10" y1="95" x2="40" y2="95" stroke="#0000ff" stroke-width="2" stroke-dasharray="4,4"/>
+        <text x="50" y="100" font-family="Arial" font-size="12">External Read</text>
+        
+        <line x1="10" y1="115" x2="40" y2="115" stroke="#ff0000" stroke-width="2" stroke-dasharray="4,4"/>
+        <text x="50" y="120" font-family="Arial" font-size="12">External Write</text>
+    </g>
+</svg>
